@@ -24,6 +24,11 @@
     },
   ];
 
+  const addFeedback = (e) => {
+    const newFeedback = e.detail;
+    feedback = [newFeedback, ...feedback];
+  };
+
   const handleDeleteTask = (e) => {
     const id = e.detail;
     feedback = feedback.filter((item) => item.id != id);
@@ -31,7 +36,7 @@
 </script>
 
 <main class="container">
-  <AddForm />
+  <AddForm on:add-feedback={addFeedback} />
   <FeedbackStats {count} {average} />
   <FeedbackList {feedback} on:delete-feedback={handleDeleteTask} />
 </main>
